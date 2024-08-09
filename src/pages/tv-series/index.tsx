@@ -12,12 +12,12 @@ import MovieList from "../../components/movie-list";
 import { MovieDataType } from "../../assets/data";
 import { MovieContext } from "../../context/movie-context";
 
-const Bookmark = () => {
+const TvSeries = () => {
   const [search, setSearch] = useState("");
   const [searchList, setSearchList] = useState<MovieDataType[]>([]);
   const { state } = useContext(MovieContext);
   const { movies } = state;
-  const bookmarks = movies.filter((movie) => movie.isBookmarked);
+  const tvSeries = movies.filter((movie) => movie.category === "TV Series");
   const handleSearch = (e: { target: { value: SetStateAction<string> } }) => {
     setSearch(e.target.value);
     const newList = movies.filter((movie) =>
@@ -68,7 +68,7 @@ const Bookmark = () => {
             <Typography variant="h5" component="h1" my={6} fontWeight={400}>
               TV Series
             </Typography>
-            <MovieList recommendList={bookmarks} />
+            <MovieList recommendList={search === "" ? tvSeries : searchList} />
           </Box>
         ) : (
           <Box width="100%">
@@ -83,4 +83,4 @@ const Bookmark = () => {
   );
 };
 
-export default Bookmark;
+export default TvSeries;

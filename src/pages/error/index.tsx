@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
-export default function Error() {
-  return (
-    <div>
-      error
-    </div>
-  )
-}
+const Error = () => {
+  return <div>Error</div>;
+};
+
+export default Error;
